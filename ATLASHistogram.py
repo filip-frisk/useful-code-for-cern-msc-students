@@ -8,6 +8,11 @@ logging.basicConfig(level=logging.INFO)
 logging.info("Importing packages, download atlasify package with 'pip install atlasify' if needed")
 
 PATH = '../data/ntuples-ggFVBF2jet-SF-28Jan.pkl'
+signal = ['VBF']
+background = ['WW', 'Zjets', 'ttbar']
+variable = 'ptJ1'
+variable_unit = 'GeV'
+variable_bound = (0,4*10**5)
 
 logging.info("Loading the data with pickle to create a pandas dataframe")
 
@@ -21,11 +26,6 @@ df['label'] = df['label'].str.replace(';1', '').str.replace('HWW_', '')
 
 logging.info("Variables of the dataset are: "+ str(df.columns))
 
-signal = ['VBF']
-background = ['WW', 'Zjets', 'ttbar']
-variable = 'ptJ1'
-variable_unit = 'GeV'
-variable_bound = (0,4*10**5)
 
 logging.info("Signal selected" + str(signal) + " and background selected: " + str(background) + " for variable: " + variable)
 

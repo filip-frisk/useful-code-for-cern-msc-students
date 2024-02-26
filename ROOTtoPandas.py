@@ -2,7 +2,6 @@
 Convert the ROOT file to a pandas dataframe
 """
 
-# import packages
 import uproot
 import pandas as pd
 import logging 
@@ -11,7 +10,6 @@ logging.info("Importing packages")
 
 PATH = '../data/ntuples-ggFVBF2jet-SF-28Jan'
 
-# load the data
 logging.info("Loading the data with uproot")
 file = uproot.open(PATH + '.root')
 logging.info("Channels in ROOT file: " + str(file.keys()) )
