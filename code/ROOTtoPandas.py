@@ -4,11 +4,12 @@ Convert the ROOT file to a pandas dataframe
 
 import uproot
 import pandas as pd
+import pyarrow.feather as feather
 import logging 
 logging.basicConfig(level=logging.INFO)
 logging.info("Importing packages")
 
-PATH = '../data/ntuples-ggFVBF2jet-SF-28Jan'
+PATH = '../../data/ntuples-ggFVBF2jet-SF-28Jan'
 
 logging.info("Loading the data with uproot")
 file = uproot.open(PATH + '.root')
@@ -28,7 +29,10 @@ logging.info("Pandas dataframe created")
 
 logging.info("Variables of the dataset are: "+ str(df.columns))
 
-logging.info("Saving pandas frame into a pickle file which is faster to load")
+
+# Alternative 1: Using pickle (quick and reliable, 1.5 - 2.0x ROOT file size)
+
+logging.info("Saving pandas frame for faster to load and access")
 df.to_pickle(PATH+'.pkl') 
 
 """
@@ -38,3 +42,14 @@ with open('data/data_ntuples-ggFVBF2jet-SF-28Jan.pkl', 'rb') as file:
 
 df = pd.DataFrame(data)
 """
+
+# Alternative 2: Using feather (efficient stored, 0.33 - 0.5x ROOT file size)
+
+feather.write_feather(df, PATH + '.feather', compression='lz4')
+
+"""
+pip install feather-format
+df_new = feather.read_feather('../../data/ntuples-ggFVBF2jet-SF-28Jan.feather')
+docs: https://arrow.apache.org/docs/python/feather.html 
+"""
+
