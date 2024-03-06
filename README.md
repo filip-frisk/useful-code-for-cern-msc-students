@@ -6,7 +6,7 @@ This is a repository to help MSc students getting started and getting some first
 
 Filip Frisk 2024 KTH.
 
-Great resources:
+other great resources:
 
 https://opendata.atlas.cern/docs/visualization/the_display_histograms_13TeV
 
