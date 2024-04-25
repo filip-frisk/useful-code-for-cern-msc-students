@@ -1,0 +1,23 @@
+Change version name to version needed this example uses python 3.12.2.
+
+Change to your username ffrisk
+
+Follow these steps:
+1. wget https://www.python.org/ftp/python/3.12.2/Python-3.12.2.tgz
+2. tar xzf Python-3.12.2.tgz
+3. cd Python-3.12.2
+4. ./configure --prefix=/home/ffrisk/.local --enable-optimizations 
+5. make
+6. make altinstall
+7. nano ~/.profile (not .bashrc since it sources profile)
+8. export PATH="$HOME/.local/bin:$PATH" (CTRL+O, Enter, CTRL+X, Enter) 
+9. rm Python-3.12.2.tgz 
+
+Now try python3.12 --version, notice that you now have at least threee versions of python:
+
+gluino:~ > python3.12 --version
+Python 3.12.2
+gluino:~ > python3 --version
+Python 3.6.8
+gluino:~ > python --version
+Python 2.7.5
