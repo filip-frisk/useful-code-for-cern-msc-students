@@ -6,7 +6,7 @@ Follow these steps:
 1. wget https://www.python.org/ftp/python/3.12.2/Python-3.12.2.tgz
 2. tar xzf Python-3.12.2.tgz
 3. cd Python-3.12.2
-4. ./configure --prefix=/home/ffrisk/.local --enable-optimizations 
+4. ./configure --prefix=/home/ffrisk/.local --enable-optimizations --with-ensurepip=install
 5. make
 6. make altinstall
 7. nano ~/.profile (not .bashrc since it sources profile)
