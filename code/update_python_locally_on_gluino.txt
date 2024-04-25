@@ -3,7 +3,8 @@ Change version name to version needed this example uses python 3.12.2.
 Change to your username ffrisk
 
 Follow these steps:
-1. wget https://www.python.org/ftp/python/3.12.2/Python-3.12.2.tgz
+1. update OpenSSL locally for pip to work
+2. wget https://www.python.org/ftp/python/3.12.2/Python-3.12.2.tgz
 2. tar xzf Python-3.12.2.tgz
 3. cd Python-3.12.2
 4. ./configure --prefix=/home/ffrisk/.local --enable-optimizations --with-ensurepip=install
