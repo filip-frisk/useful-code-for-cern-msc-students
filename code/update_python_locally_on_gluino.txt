@@ -23,7 +23,7 @@ New local version of OpenSSL:
 11. rm openssl-3.2.1.tar.gz
 
 New local version of Python:
-0. cd ~
+0. cd ~ (start in user folder)
 1. wget https://www.python.org/ftp/python/3.12.2/Python-3.12.2.tgz
 2. tar -xzf Python-3.12.2.tgz
 3. cd Python-3.12.2
@@ -44,3 +44,5 @@ gluino:~ > python3 --version
 Python 3.6.8
 gluino:~ > python --version
 Python 2.7.5
+
+FYI: Standard libarary tkinter will not be included. (if this is needed you will then troubleshoot is needed)
