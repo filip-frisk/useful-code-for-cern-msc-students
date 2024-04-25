@@ -1,20 +1,42 @@
-Change version name to version needed this example uses python 3.12.2.
+Change version name to version needed this example uses python 3.12.2 and OpenSSl 3.2.1
 
-Change to your username ffrisk
+Change to your username (mine is ffrisk)
 
-Follow these steps:
-1. update OpenSSL locally for pip to work
-2. wget https://www.python.org/ftp/python/3.12.2/Python-3.12.2.tgz
-2. tar xzf Python-3.12.2.tgz
+First you need to have a new version of OpenSSL (to get pip to work) and then you can continue with updateting python 
+
+New local version of OpenSSL:
+1. cd ~ (start in user folder)
+2. wget https://www.openssl.org/source/openssl-3.2.1.tar.gz
+3. tar -zxf openssl-3.2.1.tar.gz
+4. cd openssl-3.2.1
+5. ./config --prefix=$HOME/.local/ssl --openssldir=$HOME/.local/ssl shared
+6. make
+7. make install
+8. nano ~/.profile (not .bashrc since it sources profile)
+9. Add 
+   # Add OpenSSL path for new python
+    export PATH="$HOME/.local/ssl/bin:$PATH"
+    export LD_LIBRARY_PATH="$HOME/.local/ssl/lib64:$LD_LIBRARY_PATH"
+    export LDFLAGS="-L$HOME/.local/ssl/lib64 $LDFLAGS"
+    export CPPFLAGS="-I$HOME/.local/ssl/include $CPPFLAGS""
+10. To save and exit nano (CTRL+O, Enter, CTRL+X) 
+11. rm openssl-3.2.1.tar.gz
+
+New local version of Python:
+0. cd ~
+1. wget https://www.python.org/ftp/python/3.12.2/Python-3.12.2.tgz
+2. tar -xzf Python-3.12.2.tgz
 3. cd Python-3.12.2
-4. ./configure --prefix=/home/ffrisk/.local --enable-optimizations --with-ensurepip=install
+4. ./configure --prefix=$HOME/.local --with-openssl=$HOME/.local/ssl --enable-optimizations --with-ensurepip=install
 5. make
 6. make altinstall
 7. nano ~/.profile (not .bashrc since it sources profile)
-8. export PATH="$HOME/.local/bin:$PATH" (CTRL+O, Enter, CTRL+X, Enter) 
-9. rm Python-3.12.2.tgz 
+8. Add
+    export PATH="$HOME/.local/bin:$PATH"
+9. To save and exit nano (CTRL+O, Enter, CTRL+X) 
+10. rm Python-3.12.2.tgz 
 
-Now try python3.12 --version, notice that you now have at least threee versions of python:
+Now try python3.12 --version, notice that you now have at least three versions of python:
 
 gluino:~ > python3.12 --version
 Python 3.12.2
